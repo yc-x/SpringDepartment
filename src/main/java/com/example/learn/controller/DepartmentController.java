@@ -1,6 +1,7 @@
 package com.example.learn.controller;
 
 import com.example.learn.entity.Department;
+import com.example.learn.error.DepartmentNotFoundException;
 import com.example.learn.service.DepartmentService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -9,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class DepartmentController {
@@ -32,7 +32,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/departments/{id}")
-    public Optional<Department> fetchDepartmentById(@PathVariable("id") Long departmentId){
+    public Department fetchDepartmentById(@PathVariable("id") Long departmentId) throws DepartmentNotFoundException {
         return service.fetchDepartmentsById(departmentId);
     }
 

@@ -1,9 +1,9 @@
 package com.example.learn.service;
 
 import com.example.learn.entity.Department;
+import com.example.learn.error.DepartmentNotFoundException;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface DepartmentService {
 
@@ -11,7 +11,7 @@ public interface DepartmentService {
 
     public List<Department> fetchDepartments();
 
-    public Optional<Department> fetchDepartmentsById(Long departmentId);
+    public Department fetchDepartmentsById(Long departmentId) throws DepartmentNotFoundException;
 
     public void deleteDepartmentById(Long departmentId);
 
